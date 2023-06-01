@@ -1,4 +1,4 @@
-# MLflow, experiments & model registry
+# mlflow, experiments & model registry
 
 ## Definitions
 
@@ -88,6 +88,7 @@ mlflow.log_artifact("vectorizer.pkl", artifact_path="extra_artifacts")
 logged_model = 'runs:/9245...00aa47/models' 
 xgboost_model = mlflow.xgboost.load_model(logged_model)
 ```
+
 
 ### Model Registry
 Model register does *NOT deploy models* it mainly *lists models are production ready*
