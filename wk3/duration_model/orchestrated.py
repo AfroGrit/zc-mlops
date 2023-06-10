@@ -10,7 +10,7 @@ import mlflow
 import xgboost as xgb
 from prefect import flow, task
 
-
+@task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
     """Read data into DataFrame"""
     df = pd.read_parquet(filename)
@@ -29,6 +29,7 @@ def read_data(filename: str) -> pd.DataFrame:
     return df
 
 
+@task
 def add_features(
     df_train: pd.DataFrame, df_val: pd.DataFrame
 ) -> tuple(
@@ -60,6 +61,7 @@ def add_features(
     return X_train, X_val, y_train, y_val, dv
 
 
+@task(log_prints=True)
 def train_best_model(
     X_train: scipy.sparse.csr.csr_matrix,
     X_val: scipy.sparse.csr.csr_matrix,
@@ -89,7 +91,7 @@ def train_best_model(
         booster = xgb.train(
             params=best_params,
             dtrain=train,
-            num_boost_round=20,
+            num_boost_round=10,
             evals=[(valid, "validation")],
             early_stopping_rounds=20,
         )
@@ -106,8 +108,8 @@ def train_best_model(
         mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
     return None
 
-
-def main_flow(
+@flow
+def duration_main_flow(
     train_path: str = "./../../yellow_data/yellow_tripdata_2022-01.parquet",
     val_path: str = "./../../yellow_data/yellow_tripdata_2022-02.parquet",
 ) -> None:
