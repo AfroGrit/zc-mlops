@@ -109,7 +109,7 @@ def train_best_model(
     return None
 
 @flow
-def duration_main_flow(
+def duration_deploy_flow(
     train_path: str = "./../../yellow_data/yellow_tripdata_2022-01.parquet",
     val_path: str = "./../../yellow_data/yellow_tripdata_2022-02.parquet",
 ) -> None:
@@ -131,4 +131,4 @@ def duration_main_flow(
 
 
 if __name__ == "__main__":
-    main_flow()
+    duration_deploy_flow()
