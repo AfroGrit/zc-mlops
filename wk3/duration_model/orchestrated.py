@@ -110,14 +110,14 @@ def train_best_model(
 
 @flow
 def duration_deploy_flow(
-    train_path: str = "yellow_data/yellow_tripdata_2022-01.parquet",
-    val_path: str = "yellow_data/yellow_tripdata_2022-02.parquet",
+    train_path: str = "./yellow_data/yellow_tripdata_2022-01.parquet",
+    val_path: str = "./yellow_data/yellow_tripdata_2022-02.parquet",
 ) -> None:
     """The main training pipeline"""
 
     # MLflow settings
-    mlflow.set_tracking_uri("sqlite:///orchestrated.db")
-    mlflow.set_experiment("nyc-taxi-orchestrated")
+    mlflow.set_tracking_uri("sqlite:///orchestrated_deploy.db")
+    mlflow.set_experiment("orchestrated-deploy")
 
     # Load
     df_train = read_data(train_path)
