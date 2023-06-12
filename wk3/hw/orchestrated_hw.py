@@ -91,7 +91,7 @@ def train_best_model(
         booster = xgb.train(
             params=best_params,
             dtrain=train,
-            num_boost_round=10,
+            num_boost_round=100,
             evals=[(valid, "validation")],
             early_stopping_rounds=20,
         )
@@ -110,8 +110,8 @@ def train_best_model(
 
 @flow
 def duration_deploy_flow_hw(
-    train_path: str = "../../green_data/green_tripdata_2023-01.parquet",
-    val_path: str = "../../green_data/green_tripdata_2023-01.parquet",
+    train_path: str = "./green_data/green_tripdata_2023-01.parquet",
+    val_path: str = "./green_data/green_tripdata_2023-01.parquet",
 ) -> None:
     """The main training pipeline"""
 
