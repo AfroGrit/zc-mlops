@@ -11,13 +11,19 @@ Flow run 'amusing-armadillo' - Created task run 'Read taxi data-0' for task 'Rea
 
 ### Q2. Cron
 
+0 9 3 * *
 
 ```terminal
 prefect deploy wk3/hw/orchestrated_hw.py:duration_deploy_flow_hw -n taxi-duration-deploy-hw -p duration-model-deploy-hw-pool
 prefect worker start -p duration-model-deploy-hw-pool
 ```
 
+note - https://crontab.guru/
+
 ### Q3. RMSE
+
+
+
 ### Q4. RMSE (Markdown Artifact)
 ### Q5. Emails
 ### Q6. Prefect Cloud
