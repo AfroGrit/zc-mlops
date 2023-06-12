@@ -91,7 +91,7 @@ def train_best_model(
         booster = xgb.train(
             params=best_params,
             dtrain=train,
-            num_boost_round=10,
+            num_boost_round=100,
             evals=[(valid, "validation")],
             early_stopping_rounds=20,
         )
