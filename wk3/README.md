@@ -18,16 +18,21 @@
 ## 2.0 Deploying
 
 ```terminal
-prefect deploy orchestrated.py:main_flow -n taxi-duration-1 -p duration-model-pool
+prefect deploy orchestrated.py:duration_deploy_flow -n taxi-duration-deploy-1 -p duration-model-deploy-pool
 
 Deployment 'main-flow/taxi-duration-1' successfully created with id 
 '3ea8cb08-a037-44fd-9617-fe71b4e7bbfa'.
 View Deployment in UI: 
 http://127.0.0.1:4200/deployments/deployment/3ea8cb08-a037-44fd-9617-fe71b4e7bbfa
 
-prefect worker start -p duration-model-pool
+prefect worker start -p duration-model-deploy-pool
 zsh: /usr/local/bin/prefect: bad interpreter: /Users/afrogrit/miniconda3/envs/zc-de/bin/python3.9: no such file or directory
 Discovered worker type 'process' for work pool 'duration-model-pool'.
 Worker 'ProcessWorker c87810e8-1a3b-4471-838a-4037ea5a2bd4' started!
 
 ```
+
+NB
+
+1. add data to the repo
+2. ensure path to data is valid 
