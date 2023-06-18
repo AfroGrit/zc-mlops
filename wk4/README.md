@@ -1,6 +1,11 @@
 # Deployment
 
-NB - trying my env with *Python 3.10.4*
+NB - trying my env with 
+
+```
+Python 3.10.4
+scikit-learn==1.2.2
+```
 
 3 ways of deploying a model:
 1. Batch
@@ -9,6 +14,10 @@ NB - trying my env with *Python 3.10.4*
 
 ## Web services
 ### Web-services: Deploying models with Flask and Docker
+
+use pipenv file and .bin model from ML project.
+
+
 ### Web-services: Getting the models from the model registry (MLflow)
 
 
@@ -17,3 +26,6 @@ NB - trying my env with *Python 3.10.4*
 
 ## Batch: 
 ### Preparing a scoring script
+
+
+
